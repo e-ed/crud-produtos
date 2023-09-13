@@ -10,12 +10,21 @@ namespace ConsoleApp1
         {
             while (true)
             {
-                Console.WriteLine("1) Adicionar um item");
-                Console.WriteLine("2) Remover pelo ID");
-                Console.WriteLine("3) Editar nome pelo ID");
-                Console.WriteLine("4) Visualizar todos");
+                Console.WriteLine("\t1) Adicionar um item");
+                Console.WriteLine("\t2) Remover pelo ID");
+                Console.WriteLine("\t3) Editar nome pelo ID");
+                Console.WriteLine("\t4) Visualizar todos");
+                Console.WriteLine("\tQualquer outro numero) sair");
+                int escolha = -999;
 
-                int escolha = Int32.Parse(Console.ReadLine());
+                try
+                {
+                    escolha = Int32.Parse(Console.ReadLine());
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Digite um numero!");
+                }
 
                 switch (escolha)
                 {
@@ -23,7 +32,16 @@ namespace ConsoleApp1
                         Console.WriteLine("Digite o nome: ");
                         string novoItemNome = Console.ReadLine();
                         Console.WriteLine("Digite o preco: ");
-                        float novoItemPreco = float.Parse(Console.ReadLine());
+                        float novoItemPreco;
+                        try
+                        {
+                            novoItemPreco = float.Parse(Console.ReadLine());
+                        }
+                        catch (Exception exc)
+                        {
+                            Console.WriteLine("preco invalido!");
+                            break;
+                        }
                         Console.WriteLine("Digite a descricao: ");
                         string novoItemDescricao = Console.ReadLine();
                         Produto p = new Produto(novoItemNome, novoItemPreco, novoItemDescricao);
@@ -50,6 +68,8 @@ namespace ConsoleApp1
                         break;
                     case 4:
                         BancoUtils.visualizarTodos();
+                        break;
+                    case -999:
                         break;
                     default:
                         return;
