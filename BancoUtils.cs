@@ -1,5 +1,6 @@
 using System.Data.SqlClient;
 using MySql.Data.MySqlClient;
+using System.Data;
 namespace ConsoleApp1
 {
 
@@ -11,6 +12,7 @@ namespace ConsoleApp1
         // 1: salvar
         // 2: deletar por id
         // 3: editar pelo id
+        // 4: listar todos
 
         public static void salvar(Produto p)
         {
@@ -111,18 +113,31 @@ namespace ConsoleApp1
                         }
                         break;
                     case 4: // listar todos
+
                         string queryTodos = "SELECT * from produto";
                         using (MySqlCommand command = new MySqlCommand(queryTodos, connection))
                         {
                             using (MySqlDataReader reader = command.ExecuteReader())
                             {
-                                Console.WriteLine("id\tnome\t\tpreco\tdescricao");
+
+
+                                DataTable schemaTable = reader.GetSchemaTable();
+
+
+                                foreach (DataRow row in schemaTable.Rows)
+                                {
+                                    string columnName = row["ColumnName"].ToString();
+                                    Console.Write(columnName.PadRight(20));
+                                }
+
+                                Console.WriteLine();
+
 
                                 while (reader.Read())
                                 {
                                     for (int i = 0; i < reader.FieldCount; i++)
                                     {
-                                        Console.Write(reader[i] + "\t");
+                                        Console.Write(reader[i].ToString().PadRight(20));
                                     }
                                     Console.WriteLine();
                                 }

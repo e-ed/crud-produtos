@@ -51,6 +51,8 @@ namespace ConsoleApp1
                     case 4:
                         BancoUtils.visualizarTodos();
                         break;
+                    default:
+                        return;
 
                 }
 
