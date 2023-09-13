@@ -28,6 +28,11 @@ namespace ConsoleApp1
             conectarAoBanco(3, p);
         }
 
+        public static void visualizarTodos()
+        {
+            conectarAoBanco(4, null);
+        }
+
         public static void conectarAoBanco(int operacao, Produto p)
         {
             string connectionString = "Server=localhost;Database=ibid_produtos;User=root;";
@@ -104,6 +109,28 @@ namespace ConsoleApp1
                             }
 
                         }
+                        break;
+                    case 4: // listar todos
+                        string queryTodos = "SELECT * from produto";
+                        using (MySqlCommand command = new MySqlCommand(queryTodos, connection))
+                        {
+                            using (MySqlDataReader reader = command.ExecuteReader())
+                            {
+                                Console.WriteLine("id\tnome\t\tpreco\tdescricao");
+
+                                while (reader.Read())
+                                {
+                                    for (int i = 0; i < reader.FieldCount; i++)
+                                    {
+                                        Console.Write(reader[i] + "\t");
+                                    }
+                                    Console.WriteLine();
+                                }
+                            }
+
+
+                        }
+
                         break;
 
                 }

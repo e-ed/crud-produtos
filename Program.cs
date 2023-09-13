@@ -46,10 +46,10 @@ namespace ConsoleApp1
                         Produto p3 = new Produto();
                         p3.id = id3;
                         p3.nome = novoNome;
-                        BancoUtils.conectarAoBanco(3, p3);
+                        BancoUtils.editar(p3);
                         break;
                     case 4:
-                        Console.WriteLine("4");
+                        BancoUtils.visualizarTodos();
                         break;
 
                 }
