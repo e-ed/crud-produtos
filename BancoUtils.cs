@@ -6,6 +6,10 @@ namespace ConsoleApp1
 
     public class BancoUtils
     {
+        // um nome melhor para esta classe seria ProdutoDAO
+        // mas nao quero editar o nome e quebrar o projeto no vscode
+
+
         // mapeando int para cada operacao. deve ter um jeito melhor para fazer isso, mas
         // tenho um milhao de coisas pra fazer da faculdade e isso aqui vai resolver meu problema kkk
 

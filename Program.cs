@@ -14,8 +14,8 @@ namespace ConsoleApp1
                 Console.WriteLine("\t2) Remover pelo ID");
                 Console.WriteLine("\t3) Editar nome pelo ID");
                 Console.WriteLine("\t4) Visualizar todos");
-                Console.WriteLine("\tQualquer outro numero) sair");
-                int escolha = -999;
+                Console.WriteLine("\t5) Sair");
+                int escolha = 0;
 
                 try
                 {
@@ -30,12 +30,12 @@ namespace ConsoleApp1
                 {
                     case 1:
                         Console.WriteLine("Digite o nome: ");
-                        string novoItemNome = Console.ReadLine();
+                        string novoProdutoNome = Console.ReadLine();
                         Console.WriteLine("Digite o preco: ");
-                        float novoItemPreco;
+                        float novoProdutoPreco;
                         try
                         {
-                            novoItemPreco = float.Parse(Console.ReadLine());
+                            novoProdutoPreco = float.Parse(Console.ReadLine());
                         }
                         catch (Exception exc)
                         {
@@ -43,34 +43,37 @@ namespace ConsoleApp1
                             break;
                         }
                         Console.WriteLine("Digite a descricao: ");
-                        string novoItemDescricao = Console.ReadLine();
-                        Produto p = new Produto(novoItemNome, novoItemPreco, novoItemDescricao);
+                        string novoProdutoDescricao = Console.ReadLine();
+                        Produto p = new Produto(novoProdutoNome, novoProdutoPreco, novoProdutoDescricao);
                         BancoUtils.salvar(p);
-
-
                         break;
+
                     case 2:
                         Console.WriteLine("Digite o id do produto a ser removido: ");
-                        int id1 = Int32.Parse(Console.ReadLine());
-                        Produto p1 = new Produto();
-                        p1.id = id1;
-                        BancoUtils.remover(p1);
+                        int idRemover = Int32.Parse(Console.ReadLine());
+                        Produto produtoRemover = new Produto();
+                        produtoRemover.id = idRemover;
+                        BancoUtils.remover(produtoRemover);
                         break;
+
                     case 3:
                         Console.WriteLine("Digite o ID do produto a ser editado: ");
-                        int id3 = Int32.Parse(Console.ReadLine());
+                        int idEditar = Int32.Parse(Console.ReadLine());
                         Console.WriteLine("Digite o novo nome deste produto:");
                         string novoNome = Console.ReadLine();
-                        Produto p3 = new Produto();
-                        p3.id = id3;
-                        p3.nome = novoNome;
-                        BancoUtils.editar(p3);
+                        Produto produtoEditar = new Produto();
+                        produtoEditar.id = idEditar;
+                        produtoEditar.nome = novoNome;
+                        BancoUtils.editar(produtoEditar);
                         break;
+
                     case 4:
                         BancoUtils.visualizarTodos();
                         break;
-                    case -999:
+
+                    case 0:
                         break;
+
                     default:
                         return;
 
