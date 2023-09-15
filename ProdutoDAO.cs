@@ -24,7 +24,7 @@ namespace ConsoleApp1
         }
      
 
-        private void fecharConexao()
+        public void fecharConexao()
         {
             connection.Close();
         }
@@ -66,7 +66,7 @@ namespace ConsoleApp1
             }
             finally
             {
-                fecharConexao();
+               // fecharConexao();
             }
         }
 
@@ -99,7 +99,7 @@ namespace ConsoleApp1
                 Console.WriteLine("ex");
             }
             finally {
-                fecharConexao();
+               // fecharConexao();
             }
 
         }
@@ -136,7 +136,7 @@ namespace ConsoleApp1
 
             finally
             {
-                fecharConexao();
+                // fecharConexao();
             }
 
         }
@@ -182,7 +182,7 @@ namespace ConsoleApp1
             }
             finally
             {
-                fecharConexao();
+                // fecharConexao();
             }
         }
 

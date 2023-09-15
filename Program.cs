@@ -78,11 +78,11 @@ namespace ConsoleApp1
                         }
                         break;
 
-                    case 0:
-                        break;
-
-                    default:
+                    case 5:
+                        produtoDAO.fecharConexao();
                         return;
+
+                    
 
                 }
 
