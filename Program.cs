@@ -8,6 +8,7 @@ namespace ConsoleApp1
     {
         static void Main(String[] args)
         {
+            ProdutoDAO produtoDAO = new ProdutoDAO();
             while (true)
             {
                 Console.WriteLine("\t1) Adicionar um item");
@@ -45,7 +46,7 @@ namespace ConsoleApp1
                         Console.WriteLine("Digite a descricao: ");
                         string novoProdutoDescricao = Console.ReadLine();
                         Produto p = new Produto(novoProdutoNome, novoProdutoPreco, novoProdutoDescricao);
-                        BancoUtils.salvar(p);
+                        produtoDAO.salvar(p);
                         break;
 
                     case 2:
@@ -53,7 +54,7 @@ namespace ConsoleApp1
                         int idRemover = Int32.Parse(Console.ReadLine());
                         Produto produtoRemover = new Produto();
                         produtoRemover.id = idRemover;
-                        BancoUtils.remover(produtoRemover);
+                        produtoDAO.remover(produtoRemover);
                         break;
 
                     case 3:
@@ -64,11 +65,17 @@ namespace ConsoleApp1
                         Produto produtoEditar = new Produto();
                         produtoEditar.id = idEditar;
                         produtoEditar.nome = novoNome;
-                        BancoUtils.editar(produtoEditar);
+                        produtoDAO.editar(produtoEditar);
                         break;
 
                     case 4:
-                        BancoUtils.visualizarTodos();
+                        try
+                        {
+                            produtoDAO.visualizarTodos();
+                        } catch(SqlException e)
+                        {
+                            Console.WriteLine(e);
+                        }
                         break;
 
                     case 0:
