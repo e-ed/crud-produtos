@@ -1,3 +1,5 @@
+CRUD usando um Console Application em C#. 
+
 Banco de dados MySQL: 
 
 usuario: root
