@@ -54,10 +54,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("Erro ao salvar o produto: " + ex.Message);
             }
-            finally
-            {
-                // fecharConexao();
-            }
+
         }
 
 
@@ -89,10 +86,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine("ex");
             }
-            finally
-            {
-                // fecharConexao();
-            }
+
 
         }
 
@@ -126,10 +120,7 @@ namespace ConsoleApp1
                 Console.WriteLine(e);
             }
 
-            finally
-            {
-                // fecharConexao();
-            }
+
 
         }
 
@@ -172,10 +163,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine($"Could not find {e.Message}");
             }
-            finally
-            {
-                // fecharConexao();
-            }
+
         }
 
 
