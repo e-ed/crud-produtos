@@ -51,28 +51,29 @@ namespace ConsoleApp1
 
                     case 2:
                         Console.WriteLine("Digite o id do produto a ser removido: ");
-                        int idRemover = Int32.Parse(Console.ReadLine());
-                        Produto produtoRemover = new Produto();
-                        produtoRemover.id = idRemover;
-                        produtoDAO.remover(produtoRemover);
+                        int idSendoRemovido = Int32.Parse(Console.ReadLine());
+                        Produto produtoSendoRemovido = new Produto();
+                        produtoSendoRemovido.id = idSendoRemovido;
+                        produtoDAO.remover(produtoSendoRemovido);
                         break;
 
                     case 3:
                         Console.WriteLine("Digite o ID do produto a ser editado: ");
-                        int idEditar = Int32.Parse(Console.ReadLine());
+                        int idSendoEditado = Int32.Parse(Console.ReadLine());
                         Console.WriteLine("Digite o novo nome deste produto:");
                         string novoNome = Console.ReadLine();
-                        Produto produtoEditar = new Produto();
-                        produtoEditar.id = idEditar;
-                        produtoEditar.nome = novoNome;
-                        produtoDAO.editar(produtoEditar);
+                        Produto produtoSendoEditado = new Produto();
+                        produtoSendoEditado.id = idSendoEditado;
+                        produtoSendoEditado.nome = novoNome;
+                        produtoDAO.editar(produtoSendoEditado);
                         break;
 
                     case 4:
                         try
                         {
                             produtoDAO.visualizarTodos();
-                        } catch(SqlException e)
+                        }
+                        catch (SqlException e)
                         {
                             Console.WriteLine(e);
                         }
@@ -82,7 +83,7 @@ namespace ConsoleApp1
                         produtoDAO.fecharConexao();
                         return;
 
-                    
+
 
                 }
 
