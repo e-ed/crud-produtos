@@ -22,23 +22,13 @@ namespace ConsoleApp1
             connection = abrirConexao();
             connection.Open();
         }
-     
+
 
         public void fecharConexao()
         {
             connection.Close();
         }
 
-
-        // mapeando int para cada operacao, para nao ficar reabrindo a conexao com o banco.
-
-
-        // poderia ter colocado a conexao
-
-        // 1: salvar
-        // 2: deletar por id
-        // 3: editar pelo id
-        // 4: listar todos
 
         public void salvar(Produto p)
         {
@@ -66,14 +56,15 @@ namespace ConsoleApp1
             }
             finally
             {
-               // fecharConexao();
+                // fecharConexao();
             }
         }
 
 
         public void remover(Produto p)
         {
-            try {
+            try
+            {
                 string query = "DELETE FROM produto WHERE id = @id";
                 using (MySqlCommand command = new MySqlCommand(query, connection))
                 {
@@ -91,15 +82,16 @@ namespace ConsoleApp1
                         Console.WriteLine("ID nao encontrado");
 
                 }
-                    
 
-                }
+
+            }
             catch (Exception ex)
             {
                 Console.WriteLine("ex");
             }
-            finally {
-               // fecharConexao();
+            finally
+            {
+                // fecharConexao();
             }
 
         }
@@ -186,7 +178,7 @@ namespace ConsoleApp1
             }
         }
 
-        
+
 
     }
 }
